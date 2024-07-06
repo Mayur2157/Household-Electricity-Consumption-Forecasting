@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Household Energy Consumption Forecasting</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Household Energy Consumption Forecasting</h1>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" onclick="fetchSummary()">Overview</a>
+            </li>
+        </ul>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <input type="number" id="weeks-input" class="form-control" placeholder="Enter number of weeks" min="1" style="width: 200px; display: inline-block; margin-right: 10px;">
+                <button class="btn btn-primary" onclick="predictPower()">Predict</button>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Consumption</h5>
+                        <p class="card-text" id="total-consumption-box">0 kWh</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Average Daily Consumption</h5>
+                        <p class="card-text" id="average-daily-consumption-box">0 kWh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Forecast Graph
+                    </div>
+                    <div class="card-body">
+                        <div id="forecastGraph"></div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Appliance Breakdown Graph
+                    </div>
+                    <div class="card-body">
+                        <div id="applianceBreakdownGraph"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
